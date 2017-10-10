@@ -2,40 +2,41 @@
 
 const dom = require("./dom"); 
 
-const buildDomString = (message, selections, category) => {
-	let name = Object.keys(selections);
-	console.log("in builddomstring", name);
-	let price = Object.values(selections);
-	console.log("in builddomstring", price);
-	let finalString = "";
+// const buildDomString = (message, selections, category) => {
+// 	let name = Object.keys(selections);
+// 	console.log("in builddomstring", name);
+// 	let price = Object.values(selections);
+// 	console.log("in builddomstring", price);
+// 	let finalString = "";
 
-	var chooseItem = `<h3>${message}</3<br><br>`;
+// 	var chooseItem = `<h3>${message}</3<br><br>`;
 
- 	for(var i = 0; i < name.length; i++){
-		let domString = "";
-		domString +=	`<input type="checkbox" class="checkbox" class="${category}" name="${name[i]}" value="${price[i].toFixed(2)}">${name[i]}<br>`;
-		finalString += domString;
-	}
-	writeToDom(chooseItem + finalString);
-}
+//  	for(var i = 0; i < name.length; i++){
+// 		let domString = "";
+// 		domString +=	`<input type="checkbox" class="checkbox" class="${category}" name="${name[i]}" value="${price[i].toFixed(2)}">${name[i]}<br>`;
+// 		finalString += domString;
+// 	}
+// 	writeToDom(chooseItem + finalString);
+// }
 
-const writeToDom = (items) => {
-	document.getElementById("menuItems").innerHTML += items;
-}
+// const writeToDom = (items) => {
+// 	document.getElementById("menuItems").innerHTML += items;
+// }
 
 
 
-let checkbox = document.getElementsByClassName("checkbox");
+let checkbox = document.getElementById("menuItems");
 //console.log("checkbox", checkbox);
 
-const buildFinalSelections = (e) => {
-	for(let j = 0; j < checkbox.length; j++){
-		checkbox[j].addEventListener("click", function(e) => {
-			buildSandwich(e);
+	const newFinalSelections = () => {
+		checkbox.addEventListener("change", function(e) => {
+			console.log("event listener", e)
+			//buildSandwich(e);
 		});
 
 		}
-};
+	};
+
 
 finalChoicesArray = [];
 const buildSandwich = (e) => {
@@ -63,4 +64,4 @@ const buildSandwich = (e) => {
 };
 
 
-module.exports = {buildDomString, buildFinalSelections};
+module.exports = {newFinalSelections};

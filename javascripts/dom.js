@@ -6,6 +6,7 @@ const cheese = require("./cheese");
 const meat = require("./meat");
 const veggies = require("./veggies");
 const condiments = require("./condiments");
+const events = require("./events");
 
 const buildDomString = (message, selections) => {
 
@@ -28,6 +29,7 @@ const buildDomString = (message, selections) => {
 const writeToDom = (items) => {
 	console.log("in write to dom");
 	document.getElementById("menuItems").innerHTML += items;
+	events.newFinalSelections();
 };
 
 module.exports = {buildDomString};
